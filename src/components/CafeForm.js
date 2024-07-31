@@ -110,10 +110,10 @@ const handleCancel = (e) => {
         required
       />
       <br/>
-      <Button type="submit" variant="contained" color="primary">
+      <Button class="btn btn-primary" type="submit" variant="contained" color="primary">
         Submit
       </Button>
-      <Button variant="contained" onClick={handleCancel}>
+      <Button class="btn btn-secondary" variant="contained" onClick={handleCancel}>
         Cancel
       </Button>
     </form>

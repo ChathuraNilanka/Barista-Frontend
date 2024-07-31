@@ -20,9 +20,11 @@ import {
   deleteEmployeeFailure
 } from '../actions/employeeActions';
 
+const API = process.env.REACT_APP_API;
+
 function* fetchEmployees(action) {
   try {
-    const response = yield call(axios.get, `https://localhost:44311/api/employee?cafe=${action.payload}`);
+    const response = yield call(axios.get, `${API}/employee?cafe=${action.payload}`);
     yield put(fetchEmployeesSuccess(response.data));
   } catch (error) {
     yield put(fetchEmployeesFailure(error.message));
@@ -31,7 +33,7 @@ function* fetchEmployees(action) {
 
 function* fetchEmployeeById(action) {
   try {
-    const response = yield call(axios.get, `https://localhost:44311/api/employee/${action.payload}`);
+    const response = yield call(axios.get, `${API}/employee/${action.payload}`);
     yield put(fetchEmployeeByIdSuccess(response.data));
   } catch (error) {
     yield put(fetchEmployeeByIdFailure(error.message));
@@ -41,7 +43,7 @@ function* fetchEmployeeById(action) {
 function* updateEmployee(action) {
   try {
     console.log(action)
-    const response = yield call(axios.put, `https://localhost:44311/api/employee/${action.payload.id}`, action.payload.formData, {
+    const response = yield call(axios.put, `${API}/employee/${action.payload.id}`, action.payload.formData, {
       headers: {
         'Content-Type': 'application/json'
     }
@@ -54,7 +56,7 @@ function* updateEmployee(action) {
 
 function* addEmployee(action) {
   try {
-    const response = yield call(axios.post, 'https://localhost:44311/api/employee', action.payload, {
+    const response = yield call(axios.post, `${API}/employee`, action.payload, {
       headers: {
         'Content-Type': 'application/json'
     }
@@ -67,7 +69,7 @@ function* addEmployee(action) {
 
 function* deleteEmployee(action) {
   try {
-    yield call(axios.delete, `https://localhost:44311/api/employee/${action.payload}`);
+    yield call(axios.delete, `${API}/employee/${action.payload}`);
   } catch (error) {
     yield put(deleteEmployeeFailure(error.message));
   }

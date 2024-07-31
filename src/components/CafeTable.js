@@ -23,11 +23,11 @@ const CafeTable = ({ cafes }) => {
   };
 
   const columns = [
-    { headerName: 'Logo', field: 'logo', cellRenderer: 'imageRenderer' },
     { headerName: 'Name', field: 'name' },
     { headerName: 'Description', field: 'description' },
     { headerName: 'Employees', field: 'employees' },
     { headerName: 'Location', field: 'location' },
+    { headerName: 'Logo', field: 'logo', cellRenderer: 'imageRenderer' },
     {
       headerName: 'Actions',
       field: 'actions',

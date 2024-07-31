@@ -23,11 +23,18 @@ const EmployeesPage = () => {
     navigate('/add-employee');
   };
 
+  const handleCafePage = () => {
+    navigate('/cafes');
+  };
+
   return (
     <div>
       <h1>Employees</h1>
-      <Button variant="contained" color="primary" onClick={handleAddEmployee}>
+      <Button class="btn btn-primary" variant="contained" color="primary" onClick={handleAddEmployee}>
         Add New Employee
+      </Button>
+      <Button class="btn btn-secondary" color="secondary" onClick={handleCafePage}>
+        Navigate to Cafes
       </Button>
       <EmployeeTable employees={employees} />
     </div>

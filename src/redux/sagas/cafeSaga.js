@@ -19,9 +19,11 @@ import {
   deleteCafeFailure
 } from '../actions/cafeActions';
 
+const API = process.env.REACT_APP_API;
+
 function* fetchCafes(action) {
   try {
-    const response = yield call(axios.get, `https://localhost:44311/api/cafe?location=${action.payload}`);
+    const response = yield call(axios.get, `${API}/cafe?location=${action.payload}`);
     yield put(fetchCafesSuccess(response.data));
   } catch (error) {
     yield put(fetchCafesFailure(error.message));
@@ -30,7 +32,7 @@ function* fetchCafes(action) {
 
 function* fetchCafeById(action) {
   try {
-    const response = yield call(axios.get, `https://localhost:44311/api/cafe/${action.payload}`);
+    const response = yield call(axios.get, `${API}/cafe/${action.payload}`);
     yield put(fetchCafeByIdSuccess(response.data));
   } catch (error) {
     yield put(fetchCafeByIdFailure(error.message));
@@ -39,7 +41,7 @@ function* fetchCafeById(action) {
 
 function* updateCafe(action) {
   try {
-    const response = yield call(axios.put, `https://localhost:44311/api/cafe/${action.payload.id}`, action.payload.formData, {
+    const response = yield call(axios.put, `${API}/cafe/${action.payload.id}`, action.payload.formData, {
       headers: {
         'Content-Type': 'application/json'
     }
@@ -52,7 +54,7 @@ function* updateCafe(action) {
 
 function* addCafe(action) {
   try {
-    const response = yield call(axios.post, `https://localhost:44311/api/cafe`, action.payload, {
+    const response = yield call(axios.post, `${API}/cafe`, action.payload, {
       headers: {
         'Content-Type': 'application/json'
     }
@@ -65,7 +67,7 @@ function* addCafe(action) {
 
 function* deleteCafe(action) {
   try {
-    yield call(axios.delete, `https://localhost:44311/api/cafe/${action.payload}`);
+    yield call(axios.delete, `${API}/cafe/${action.payload}`);
   } catch (error) {
     yield put(deleteCafeFailure(error.message));
   }

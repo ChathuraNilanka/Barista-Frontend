@@ -33,7 +33,7 @@ const CafesPage = () => {
         onChange={handleLocationFilterChange}
       />
       <br/><br/>
-      <Button variant="contained" color="primary" onClick={handleAddCafe}>
+      <Button class="btn btn-primary" variant="contained" color="primary" onClick={handleAddCafe}>
         Add New Cafe
       </Button>
       <CafeTable cafes={cafes} />
